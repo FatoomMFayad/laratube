@@ -53,7 +53,7 @@ class User extends Authenticatable
 
         static::creating(function ($model) {
             //generete a unique id for the model
-            $model->id = Str::uuid();
+            $model->{$model->getKeyName()} = Str::uuid();
         });
     }
 }
