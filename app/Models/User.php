@@ -8,11 +8,23 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
 
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    public $incrementing = false;
 
+    protected static function boot()
+    {
+        parent::boot();
+
+
+        static::creating(function ($model) {
+            //generete a unique id for the model
+            $model->{$model->getKeyName()} = Str::uuid();
+        });
+    }
 
 
 

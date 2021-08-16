@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model as BaseModel;
+use Illuminate\Support\Str;
+
 
 class Model extends BaseModel
 {
@@ -17,7 +19,7 @@ class Model extends BaseModel
 
         static::creating(function ($model) {
             //generete a unique id for the model
-            $model->{$model->getKeyName()} = Str::uuid();
+            $model->{$model->getKeyName()} = (string) Str::uuid();
         });
     }
 }
