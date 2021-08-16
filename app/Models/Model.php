@@ -12,6 +12,8 @@ class Model extends BaseModel
     use HasFactory;
     public $incrementing = false;
 
+    protected $guarded = [];
+
     protected static function boot()
     {
         parent::boot();
