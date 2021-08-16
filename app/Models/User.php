@@ -12,7 +12,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
-    public $incrementing = false;
+
 
 
 
@@ -45,15 +45,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    protected static function boot()
-    {
-        parent::boot();
-
-
-        static::creating(function ($model) {
-            //generete a unique id for the model
-            $model->{$model->getKeyName()} = Str::uuid();
-        });
-    }
 }
